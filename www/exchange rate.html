@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="EC.css">
+</head>
+<body>
+  	<!-- Use Table to Create Calculator Structure Design -->
+	<table id="calcu">
+    <tr>
+      <td><input type="button" value="Calculator" class="buttons" onclick="gotoCalculator()"></td> 
+			<td><input type="button" value="Exchange Rate" onclick="gotoExchangeRate()"></td> 
+			<td><input type="button" value="More" onclick="gotoMore()"></td>
+
+    </tr> 
+    <tr> 
+			<td>
+
+ 
+  <h1>Currency Converter</h1>
+  <div class="container">
+    <div class="currency">
+      <select id="currency-one">
+        <option value="AED">AED</option>
+        <option value="ARS">ARS</option>
+        <option value="AUD">AUD</option>
+        <option value="BGN">BGN</option>
+        <option value="BRL">BRL</option>
+        <option value="BSD">BSD</option>
+        <option value="CAD">CAD</option>
+        <option value="CHF">CHF</option>
+        <option value="CLP">CLP</option>
+        <option value="CNY">CNY</option>
+        <option value="COP">COP</option>
+        <option value="CZK">CZK</option>
+        <option value="DKK">DKK</option>
+        <option value="DOP">DOP</option>
+        <option value="EGP">EGP</option>
+        <option value="EUR">EUR</option>
+        <option value="FJD">FJD</option>
+        <option value="GBP">GBP</option>
+        <option value="GTQ">GTQ</option>
+        <option value="HKD">HKD</option>
+        <option value="HRK">HRK</option>
+        <option value="HUF">HUF</option>
+        <option value="IDR">IDR</option>
+        <option value="ILS">ILS</option>
+        <option value="INR" selected>INR</option>
+        <option value="ISK">ISK</option>
+        <option value="JPY">JPY</option>
+        <option value="KRW">KRW</option>
+        <option value="KZT">KZT</option>
+        <option value="MXN">MXN</option>
+        <option value="MYR">MYR</option>
+        <option value="NOK">NOK</option>
+        <option value="NZD">NZD</option>
+        <option value="PAB">PAB</option>
+        <option value="PEN">PEN</option>
+        <option value="PHP">PHP</option>
+        <option value="PKR">PKR</option>
+        <option value="PLN">PLN</option>
+        <option value="PYG">PYG</option>
+        <option value="RON">RON</option>
+        <option value="RUB">RUB</option>
+        <option value="SAR">SAR</option>
+        <option value="SEK">SEK</option>
+        <option value="SGD">SGD</option>
+        <option value="THB">THB</option>
+        <option value="TRY">TRY</option>
+        <option value="TWD">TWD</option>
+        <option value="UAH">UAH</option>
+        <option value="USD">USD</option>
+        <option value="UYU">UYU</option>
+        <option value="VND">VND</option>
+        <option value="ZAR">ZAR</option>
+      </select>
+      <input type="number" id="amount-one" placeholder="0" value="1">
+    </div>
+    <div class="swap-rate-container">
+      <button class="btn" id="swap">Swap</button>
+      <div class="rate" id="rate"></div>
+    </div>
+    <div class="currency">
+      <select id="currency-two">
+        <option value="AED">AED</option>
+        <option value="ARS">ARS</option>
+        <option value="AUD">AUD</option>
+        <option value="BGN">BGN</option>
+        <option value="BRL">BRL</option>
+        <option value="BSD">BSD</option>
+        <option value="CAD">CAD</option>
+        <option value="CHF">CHF</option>
+        <option value="CLP">CLP</option>
+        <option value="CNY">CNY</option>
+        <option value="COP">COP</option>
+        <option value="CZK">CZK</option>
+        <option value="DKK">DKK</option>
+        <option value="DOP">DOP</option>
+        <option value="EGP">EGP</option>
+        <option value="EUR">EUR</option>
+        <option value="FJD">FJD</option>
+        <option value="GBP">GBP</option>
+        <option value="GTQ">GTQ</option>
+        <option value="HKD">HKD</option>
+        <option value="HRK">HRK</option>
+        <option value="HUF">HUF</option>
+        <option value="IDR">IDR</option>
+        <option value="ILS">ILS</option>
+        <option value="INR">INR</option>
+        <option value="ISK">ISK</option>
+        <option value="JPY">JPY</option>
+        <option value="KRW">KRW</option>
+        <option value="KZT">KZT</option>
+        <option value="MXN">MXN</option>
+        <option value="MYR">MYR</option>
+        <option value="NOK">NOK</option>
+        <option value="NZD">NZD</option>
+        <option value="PAB">PAB</option>
+        <option value="PEN">PEN</option>
+        <option value="PHP">PHP</option>
+        <option value="PKR">PKR</option>
+        <option value="PLN">PLN</option>
+        <option value="PYG">PYG</option>
+        <option value="RON">RON</option>
+        <option value="RUB">RUB</option>
+        <option value="SAR">SAR</option>
+        <option value="SEK">SEK</option>
+        <option value="SGD">SGD</option>
+        <option value="THB">THB</option>
+        <option value="TRY">TRY</option>
+        <option value="TWD">TWD</option>
+        <option value="UAH">UAH</option>
+        <option value="USD" selected>USD</option>
+        <option value="UYU">UYU</option>
+        <option value="VND">VND</option>
+        <option value="ZAR">ZAR</option>
+      </select>
+      <input type="number" id="amount-two" placeholder="0">
+    </div>
+  </div>
+</td> 
+</tr>
+
+<link rel="stylesheet" href="ER.css">
+<tr>
+  <td><input type="button" value="c" onclick="clr()" /> </td> 
+  <td><input type="button" value="%" onclick="dis('%')"
+      onkeydown="myFunction(event)"> </td> 
+  <td><input type="button" value="<-" onclick="bck()"
+          onkeydown="myFunction(event)"> </td> 
+  <td><input type="button" value="/" onclick="dis('/')"
+  onkeydown="myFunction(event)"> </td> 
+</tr>
+
+<tr> 
+<td><input type="button" value="7" onclick="dis('7')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="8" onclick="dis('8')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="9" onclick="dis('9')"
+  onkeydown="myFunction(event)"> </td> 
+  <td><input type="button" value="x" onclick="dis('*')"
+                  onkeydown="myFunction(event)"> </td> 
+
+</tr> 
+
+<tr> 
+<td><input type="button" value="4" onclick="dis('4')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="5" onclick="dis('5')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="6" onclick="dis('6')"
+  onkeydown="myFunction(event)"> </td> 
+  <td><input type="button" value="-" onclick="dis('-')"
+                  onkeydown="myFunction(event)"> </td> 
+
+</tr> 
+
+<tr> 
+<td><input type="button" value="1" onclick="dis('1')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="2" onclick="dis('2')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="3" onclick="dis('3')"
+  onkeydown="myFunction(event)"> </td> 
+  <td><input type="button" value="+" onclick="dis('+')"
+                  onkeydown="myFunction(event)"> </td> 
+
+</tr> 
+
+<tr> 
+  <td><input type="button" value="00" onclick="dis('00')"
+      onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="0" onclick="dis('0')"
+  onkeydown="myFunction(event)"> </td> 
+<td><input type="button" value="." onclick="dis('.')"
+  onkeydown="myFunction(event)"> </td> 
+
+<!-- solve function call function solve to evaluate value -->
+<td><input type="button" value="=" onclick="solve()"> </td> 
+
+
+</tr> 
+
+</table> 
+
+  <script src="ER.js"></script>
+</body>
+
+<style>
+  body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Apply a background color and text styles */
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    
+    /* Style the heading */
+    h1 {
+      font-size: 32px;
+      margin: 20px 0;
+    }
+    
+    /* Style the container for currency inputs */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+    
+    /* Style currency select and input elements */
+    .currency {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      width: 250px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    select, input {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+    
+    /* Style the swap button and rate display */
+    .swap-rate-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+    
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    
+    .rate {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+    
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    
+      .currency {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+    }
+  
+  
+  .main {
+  
+      width: 50vw;
+  
+      margin: auto;
+  
+      padding: 30px;
+  
+      border-radius: 5px;
+  
+      background-color: rgba(0, 0, 0, 0.5);
+  
+      color: white;
+  }
+  
+  
+  label {
+  
+      font-size: 20px;
+  }
+  
+  
+  .btn {
+  
+      width: 200px;
+  }
+  
+  
+  #finalAmount {
+  
+      font-family: 'Lobster', cursive;
+  
+      display: none;
+  
+      margin: 50px auto;
+  }
+  
+  
+  
+  #finalAmount h2 {
+  
+      font-size: 50px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: antiquewhite;
+  }
+  
+  
+  .finalValue {
+  
+      font-family: 'Amiri', serif;
+      color: antiquewhite;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+  
+      hr {
+  
+          width: 60%;
+  
+      }
+  
+      .main {
+  
+          width: 100%;
+  
+      }
+  }
+  
+  
+  
+  @media (max-width: 400px) {
+  
+      .heading {
+  
+          font-size: 60px;
+  
+      }
+  
+      hr {
+  
+          width: 75%;
+  
+      }
+  
+      #finalAmount h2,
+      .finalValue {
+  
+          font-size: 40px;
+  
+      }
+  }</style>
+  <style>
+    		table { 
+			border: 1px solid black; 
+			margin-left: auto; 
+			margin-right: auto; 
+		} 
+
+		input[type="button"] { 
+			width: 100%; 
+			padding: 20px 40px; 
+			background-color: darkblue; 
+			color: white; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+		} 
+
+		input[type="text"] { 
+			padding: 20px 30px; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+			border: 2px solid black; 
+		} 
+        .tr.menu{
+            width: 100%; 
+			padding: 20px 40px; 
+			background-color: lightblue; 
+			color: white; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+        }
+  </style>
+
+</html>

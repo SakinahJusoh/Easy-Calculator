@@ -1,0 +1,337 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title>JavaScript Calculator</title> 
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+		integrity= 
+"sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script> 
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+		integrity= 
+"sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script> 
+		
+	
+</head> 
+	
+<body> 
+	
+	<!-- Use Table to Create Calculator Structure Design -->
+	<table id="calcu">
+		<tr class="menu">
+			<td><input type="button" value="Calculator" class="buttons" onclick="gotoCalculator()"></td> 
+			<td><input type="button" value="Exchange Rate" onclick="gotoExchangeRate()"></td> 
+			<td><input type="button" value="More" onclick="gotoMore()"></td> 
+		</tr>
+		
+		
+		<tr> 
+			<td colspan="4"><input type="text" id="result"></td> 
+
+		</tr> 
+
+        <tr>
+            <td><input type="button" value="c" onclick="clr()" /> </td> 
+            <td><input type="button" value="%" onclick="dis('%')"
+                onkeydown="myFunction(event)"> </td> 
+            <td><input type="button" value="<-" onclick="bck()"
+                    onkeydown="myFunction(event)"> </td> 
+            <td><input type="button" value="/" onclick="dis('/')"
+						onkeydown="myFunction(event)"> </td> 
+        </tr>
+
+		<tr> 
+			<td><input type="button" value="7" onclick="dis('7')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="8" onclick="dis('8')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="9" onclick="dis('9')"
+						onkeydown="myFunction(event)"> </td> 
+            <td><input type="button" value="x" onclick="dis('*')"
+                            onkeydown="myFunction(event)"> </td> 
+
+		</tr> 
+
+        <tr> 
+			<td><input type="button" value="4" onclick="dis('4')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="5" onclick="dis('5')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="6" onclick="dis('6')"
+						onkeydown="myFunction(event)"> </td> 
+            <td><input type="button" value="-" onclick="dis('-')"
+                            onkeydown="myFunction(event)"> </td> 
+
+		</tr> 
+
+        <tr> 
+			<td><input type="button" value="1" onclick="dis('1')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="2" onclick="dis('2')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="3" onclick="dis('3')"
+						onkeydown="myFunction(event)"> </td> 
+            <td><input type="button" value="+" onclick="dis('+')"
+                            onkeydown="myFunction(event)"> </td> 
+
+		</tr> 
+
+		<tr> 
+            <td><input type="button" value="00" onclick="dis('00')"
+                onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="0" onclick="dis('0')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="." onclick="dis('.')"
+						onkeydown="myFunction(event)"> </td> 
+			
+			<!-- solve function call function solve to evaluate value -->
+			<td><input type="button" value="=" onclick="solve()"> </td> 
+
+
+		</tr> 
+	</table> 
+	<div class="rightSide">
+		<h4>HISTORY</h4>
+		<div class="historyContainer">
+			<script src="ES.js"></script>
+		</div>
+	
+	<style>
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+	}
+  
+  /* Apply a background color and text styles */
+  body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Style the heading */
+  h1 {
+    font-size: 32px;
+    margin: 20px 0;
+  }
+  
+  /* Style the container for currency inputs */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  
+  /* Style currency select and input elements */
+  .currency {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  select, input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  /* Style the swap button and rate display */
+  .swap-rate-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .rate {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .currency {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 24px;
+    }
+  }
+
+
+.main {
+
+    width: 50vw;
+
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 5px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    color: white;
+}
+
+
+label {
+
+    font-size: 20px;
+}
+
+
+.btn {
+
+    width: 200px;
+}
+
+
+#finalAmount {
+
+    font-family: 'Lobster', cursive;
+
+    display: none;
+
+    margin: 50px auto;
+}
+
+
+
+#finalAmount h2 {
+
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: antiquewhite;
+}
+
+
+.finalValue {
+
+    font-family: 'Amiri', serif;
+    color: antiquewhite;
+}
+
+
+
+@media (max-width: 768px) {
+
+    hr {
+
+        width: 60%;
+
+    }
+
+    .main {
+
+        width: 100%;
+
+    }
+}
+
+
+
+@media (max-width: 400px) {
+
+    .heading {
+
+        font-size: 60px;
+
+    }
+
+    hr {
+
+        width: 75%;
+
+    }
+
+    #finalAmount h2,
+    .finalValue {
+
+        font-size: 40px;
+
+    }
+}</style>
+
+<style>
+			table { 
+			border: 1px solid black; 
+			margin-left: auto; 
+			margin-right: auto; 
+		} 
+
+		input[type="button"] { 
+			width: 100%; 
+			padding: 20px 40px; 
+			background-color: darkblue; 
+			color: white; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+		} 
+
+		input[type="text"] { 
+			padding: 20px 30px; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+			border: 2px solid black; 
+		} 
+        .tr.menu{
+            width: 100%; 
+			padding: 20px 40px; 
+			background-color: lightblue; 
+			color: white; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+        }
+</style>
+		
+	<script src="ES.js"></script>
+
+
+</body> 
+
+
+</html> 
